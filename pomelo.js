@@ -1512,7 +1512,6 @@ require.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", fu
   var handler = {};
 
   var heartbeat = function(data) {
-    console.log('on heartbeat')
     if(!heartbeatInterval) {
       // no heartbeat
       return;
@@ -1531,7 +1530,6 @@ require.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", fu
 
     heartbeatId = setTimeout(function() {
       heartbeatId = null;
-        console.log('send heartbeat')
       send(obj);
 
       nextHeartbeatTimeout = Date.now() + heartbeatTimeout;
@@ -1566,7 +1564,7 @@ require.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", fu
 
     var obj = Package.encode(Package.TYPE_HANDSHAKE_ACK);
     send(obj);
-    heartbeat();
+
     if(initCallback) {
       initCallback(socket);
       initCallback = null;
